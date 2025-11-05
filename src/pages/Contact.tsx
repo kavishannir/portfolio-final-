@@ -1,0 +1,243 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin, Send, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import PageTransition from "@/components/PageTransition";
+
+const Contact = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate email sending (replace with EmailJS integration)
+    setTimeout(() => {
+      toast({
+        title: "Message Sent! ✉️",
+        description: "Thanks for reaching out! I'll get back to you soon.",
+      });
+      setFormData({ name: "", email: "", message: "" });
+      setIsSubmitting(false);
+    }, 1000);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      label: "Email",
+      value: "kavishan@example.com",
+      link: "mailto:kavishan@example.com",
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      value: "+94 77 123 4567",
+      link: "tel:+94771234567",
+    },
+    {
+      icon: MapPin,
+      label: "Location",
+      value: "Colombo, Sri Lanka",
+      link: null,
+    },
+  ];
+
+  return (
+    <PageTransition>
+      <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-6xl">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-16"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <span className="text-gradient">Let's Connect</span>
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Have a project in mind or just want to chat? Feel free to reach out!
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="glass rounded-2xl p-8"
+            >
+              <h2 className="text-2xl font-bold text-foreground mb-6">Send a Message</h2>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                    Name
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                    className="bg-secondary border-border focus:border-primary"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                    Email
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="your.email@example.com"
+                    className="bg-secondary border-border focus:border-primary"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                    Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell me about your project..."
+                    className="bg-secondary border-border focus:border-primary min-h-[150px]"
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary hover:bg-accent text-primary-foreground glow-gold-hover"
+                  size="lg"
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center">
+                      <span className="animate-spin mr-2">⏳</span> Sending...
+                    </span>
+                  ) : (
+                    <>
+                      <Send className="mr-2 h-5 w-5" />
+                      Send Message
+                    </>
+                  )}
+                </Button>
+              </form>
+            </motion.div>
+
+            {/* Contact Info & CTA */}
+            <div className="space-y-6">
+              {/* Contact Information */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="glass rounded-2xl p-8"
+              >
+                <h2 className="text-2xl font-bold text-foreground mb-6">Contact Information</h2>
+                <div className="space-y-6">
+                  {contactInfo.map((info, index) => {
+                    const Icon = info.icon;
+                    return (
+                      <motion.div
+                        key={info.label}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 + index * 0.1 }}
+                        className="flex items-start space-x-4"
+                      >
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
+                          <Icon className="w-6 h-6 text-primary-foreground" />
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">{info.label}</p>
+                          {info.link ? (
+                            <a
+                              href={info.link}
+                              className="text-foreground font-medium hover:text-primary transition-colors"
+                            >
+                              {info.value}
+                            </a>
+                          ) : (
+                            <p className="text-foreground font-medium">{info.value}</p>
+                          )}
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+
+              {/* Download CV */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6 }}
+                className="glass rounded-2xl p-8 text-center"
+              >
+                <h3 className="text-xl font-bold text-foreground mb-4">Interested in my work?</h3>
+                <p className="text-muted-foreground mb-6">
+                  Download my CV to learn more about my experience and qualifications.
+                </p>
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-accent text-primary-foreground glow-gold-hover w-full"
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  Download CV
+                </Button>
+              </motion.div>
+
+              {/* Availability */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.7 }}
+                className="glass rounded-2xl p-6 border border-primary/30"
+              >
+                <div className="flex items-center space-x-3">
+                  <div className="relative">
+                    <div className="w-3 h-3 bg-green-500 rounded-full animate-glow-pulse" />
+                    <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Available for opportunities</p>
+                    <p className="text-sm text-muted-foreground">Open to freelance projects and full-time roles</p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </PageTransition>
+  );
+};
+
+export default Contact;
