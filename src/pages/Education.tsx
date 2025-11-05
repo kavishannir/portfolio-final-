@@ -64,8 +64,12 @@ const Education = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-5xl">
+      <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8 gradient-blur-navy relative">
+        {/* Floating gradient orbs */}
+        <div className="floating-orb w-80 h-80 bg-primary top-32 right-16" style={{ animationDelay: '1s' }} />
+        <div className="floating-orb w-96 h-96 bg-accent bottom-32 left-16" style={{ animationDelay: '3s' }} />
+        
+        <div className="container mx-auto max-w-5xl relative z-10">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -73,7 +77,7 @@ const Education = () => {
             className="text-center mb-16"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient">Education & Certifications</span>
+              <span className="text-gradient-animate">Education & Certifications</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               My academic background and professional certifications
@@ -90,8 +94,8 @@ const Education = () => {
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.2 }}
-                  whileHover={{ x: 10 }}
-                  className="glass rounded-2xl p-6 glow-gold-hover"
+                  whileHover={{ x: 10, scale: 1.02 }}
+                  className="glass-premium rounded-2xl p-6 glow-gold-hover"
                 >
                   {/* Header */}
                   <div className="flex items-start space-x-4 mb-4">
@@ -152,8 +156,8 @@ const Education = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + index * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="glass rounded-2xl p-6 text-center glow-gold-hover"
+                  whileHover={{ scale: 1.05, y: -5, rotateY: 5 }}
+                  className="glass-premium rounded-2xl p-6 text-center glow-gold-hover"
                 >
                   <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-3xl">
                     {cert.icon}

@@ -12,8 +12,12 @@ const About = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-6xl">
+      <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8 gradient-blur-gold relative">
+        {/* Floating gradient orbs */}
+        <div className="floating-orb w-96 h-96 bg-primary top-20 left-10" style={{ animationDelay: '0s' }} />
+        <div className="floating-orb w-80 h-80 bg-accent bottom-20 right-10" style={{ animationDelay: '2s' }} />
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
           {/* Hero Section */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Text Content */}
@@ -30,7 +34,7 @@ const About = () => {
               >
                 <h2 className="text-primary text-lg font-semibold mb-2">Hello, I'm</h2>
                 <h1 className="text-5xl md:text-6xl font-bold mb-4">
-                  <span className="text-gradient">Kavishan</span>
+                  <span className="text-gradient-animate">Kavishan</span>
                 </h1>
                 <p className="text-xl md:text-2xl text-muted-foreground">
                   Developer | Salesforce Enthusiast | DevOps Learner
@@ -156,8 +160,8 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2 + index * 0.1 }}
-                className="glass rounded-2xl p-8 text-center glow-gold-hover"
-                whileHover={{ scale: 1.05 }}
+                className="glass-premium rounded-2xl p-8 text-center glow-gold-hover"
+                whileHover={{ scale: 1.05, rotateY: 5 }}
               >
                 <h3 className="text-4xl md:text-5xl font-bold text-gradient mb-2">{stat.number}</h3>
                 <p className="text-muted-foreground">{stat.label}</p>

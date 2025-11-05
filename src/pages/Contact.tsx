@@ -58,8 +58,12 @@ const Contact = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-6xl">
+      <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8 gradient-blur-navy relative">
+        {/* Floating gradient orbs */}
+        <div className="floating-orb w-96 h-96 bg-primary top-20 left-20" style={{ animationDelay: '1s' }} />
+        <div className="floating-orb w-80 h-80 bg-accent bottom-20 right-20" style={{ animationDelay: '3s' }} />
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -67,7 +71,7 @@ const Contact = () => {
             className="text-center mb-16"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient">Let's Connect</span>
+              <span className="text-gradient-animate">Let's Connect</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Have a project in mind or just want to chat? Feel free to reach out!
@@ -80,7 +84,7 @@ const Contact = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="glass rounded-2xl p-8"
+              className="glass-premium rounded-2xl p-8"
             >
               <h2 className="text-2xl font-bold text-foreground mb-6">Send a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -158,7 +162,7 @@ const Contact = () => {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
-                className="glass rounded-2xl p-8"
+                className="glass-premium rounded-2xl p-8"
               >
                 <h2 className="text-2xl font-bold text-foreground mb-6">Contact Information</h2>
                 <div className="space-y-6">
@@ -199,7 +203,7 @@ const Contact = () => {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.6 }}
-                className="glass rounded-2xl p-8 text-center"
+                className="glass-premium rounded-2xl p-8 text-center"
               >
                 <h3 className="text-xl font-bold text-foreground mb-4">Interested in my work?</h3>
                 <p className="text-muted-foreground mb-6">
@@ -219,7 +223,7 @@ const Contact = () => {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.7 }}
-                className="glass rounded-2xl p-6 border border-primary/30"
+                className="glass-premium rounded-2xl p-6 border border-primary/30"
               >
                 <div className="flex items-center space-x-3">
                   <div className="relative">

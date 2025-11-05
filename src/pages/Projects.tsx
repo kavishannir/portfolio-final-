@@ -41,8 +41,12 @@ const Projects = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-7xl">
+      <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8 gradient-blur-gold relative">
+        {/* Floating gradient orbs */}
+        <div className="floating-orb w-80 h-80 bg-primary top-32 right-20" style={{ animationDelay: '0.5s' }} />
+        <div className="floating-orb w-96 h-96 bg-accent bottom-32 left-20" style={{ animationDelay: '2.5s' }} />
+        
+        <div className="container mx-auto max-w-7xl relative z-10">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -50,7 +54,7 @@ const Projects = () => {
             className="text-center mb-16"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient">My Projects</span>
+              <span className="text-gradient-animate">My Projects</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               A showcase of my work spanning web development, Salesforce solutions, and mobile applications
@@ -65,8 +69,8 @@ const Projects = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="glass rounded-2xl overflow-hidden group"
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="glass-premium rounded-2xl overflow-hidden group"
               >
                 {/* Project Image */}
                 <div className="relative h-48 overflow-hidden">

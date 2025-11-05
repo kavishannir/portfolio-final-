@@ -44,8 +44,12 @@ const Skills = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-7xl">
+      <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8 gradient-blur-navy relative">
+        {/* Floating gradient orbs */}
+        <div className="floating-orb w-96 h-96 bg-accent top-40 right-10" style={{ animationDelay: '1s' }} />
+        <div className="floating-orb w-72 h-72 bg-primary bottom-40 left-10" style={{ animationDelay: '3s' }} />
+        
+        <div className="container mx-auto max-w-7xl relative z-10">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -53,7 +57,7 @@ const Skills = () => {
             className="text-center mb-16"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient">My Skills</span>
+              <span className="text-gradient-animate">My Skills</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               A comprehensive overview of my technical expertise and professional capabilities
@@ -70,8 +74,8 @@ const Skills = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.03, y: -5 }}
-                  className="glass rounded-2xl p-6 glow-gold-hover"
+                  whileHover={{ scale: 1.03, y: -5, rotateY: 3 }}
+                  className="glass-premium rounded-2xl p-6 glow-gold-hover"
                 >
                   {/* Category Header */}
                   <div className="flex items-center space-x-4 mb-6">
@@ -105,7 +109,7 @@ const Skills = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
-            className="mt-16 glass rounded-2xl p-8"
+            className="mt-16 glass-premium rounded-2xl p-8"
           >
             <h3 className="text-2xl font-bold text-gradient mb-8 text-center">Proficiency Levels</h3>
             <div className="space-y-6">

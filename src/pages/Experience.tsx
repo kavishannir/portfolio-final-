@@ -41,8 +41,12 @@ const Experience = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-5xl">
+      <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8 gradient-blur-gold relative">
+        {/* Floating gradient orbs */}
+        <div className="floating-orb w-96 h-96 bg-accent top-24 left-10" style={{ animationDelay: '0s' }} />
+        <div className="floating-orb w-80 h-80 bg-primary bottom-24 right-10" style={{ animationDelay: '2.5s' }} />
+        
+        <div className="container mx-auto max-w-5xl relative z-10">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -50,7 +54,7 @@ const Experience = () => {
             className="text-center mb-16"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-gradient">Work Experience</span>
+              <span className="text-gradient-animate">Work Experience</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               My professional journey and key contributions across different roles
@@ -80,8 +84,8 @@ const Experience = () => {
                   {/* Content Card */}
                   <div className={`ml-20 md:ml-0 md:w-5/12 ${index % 2 === 0 ? "md:mr-auto md:pr-12" : "md:ml-auto md:pl-12"}`}>
                     <motion.div
-                      whileHover={{ scale: 1.03, y: -5 }}
-                      className="glass rounded-2xl p-6 glow-gold-hover"
+                      whileHover={{ scale: 1.03, y: -5, rotateY: 3 }}
+                      className="glass-premium rounded-2xl p-6 glow-gold-hover"
                     >
                       {/* Header */}
                       <div className="flex items-start space-x-4 mb-4">
