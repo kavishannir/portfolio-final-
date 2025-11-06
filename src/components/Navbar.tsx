@@ -1,95 +1,102 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const navItems = [
-  { name: "About", path: "/" },
-  { name: "Skills", path: "/skills" },
-  { name: "Projects", path: "/projects" },
-  { name: "Experience", path: "/experience" },
-  { name: "Education", path: "/education" },
-  { name: "Contact", path: "/contact" },
-];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const navItems = [
+    { name: "Home", path: "/", isScroll: true, scrollTo: "hero" },
+    { name: "About", path: "/", isScroll: true, scrollTo: "about" },
+    { name: "Skills", path: "/", isScroll: true, scrollTo: "skills-projects" },
+    { name: "Workshops", path: "/", isScroll: true, scrollTo: "workshops" },
+    { name: "Experience", path: "/", isScroll: true, scrollTo: "experience" },
+    { name: "Education", path: "/education" },
+    { name: "Contact", path: "/contact" },
+  ];
+
+  const handleNavClick = (item: typeof navItems[0], e: React.MouseEvent) => {
+    if (item.isScroll) {
+      e.preventDefault();
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          document.getElementById(item.scrollTo!)?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else {
+        document.getElementById(item.scrollTo!)?.scrollIntoView({ behavior: "smooth" });
+      }
+      setIsOpen(false);
+    }
+  };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <motion.div
-              className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold text-xl glow-gold-hover"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              K
-            </motion.div>
-            <span className="text-xl font-bold text-gradient hidden sm:block">Kavishan</span>
-          </Link>
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-card py-4 px-4 sm:px-6 lg:px-8 border-b border-primary/20">
+      <div className="container mx-auto flex items-center justify-between">
+        <Link to="/" className="text-2xl font-bold" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <span className="text-gradient-animate">Kavishan</span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
+        <div className="hidden md:flex items-center space-x-8">
+          {navItems.map((item) => {
+            const isActive = item.isScroll ? location.pathname === "/" : location.pathname === item.path;
+            return (
               <Link
-                key={item.path}
+                key={item.name}
                 to={item.path}
-                className="relative px-4 py-2 text-sm font-medium transition-colors"
+                onClick={(e) => handleNavClick(item, e)}
+                className={`relative text-sm font-medium transition-colors hover:text-primary ${
+                  isActive ? "text-primary" : "text-foreground/80"
+                }`}
               >
-                <span className={location.pathname === item.path ? "text-primary" : "text-foreground hover:text-primary"}>
-                  {item.name}
-                </span>
-                {location.pathname === item.path && (
+                {item.name}
+                {isActive && (
                   <motion.div
                     layoutId="navbar-indicator"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-purple-blue glow-purple"
+                    initial={false}
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
               </Link>
-            ))}
-          </div>
-
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            );
+          })}
         </div>
+
+        <button
+          className="md:hidden text-foreground p-2 rounded-lg glass-card hover:bg-primary/10"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
-      {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-border"
+            className="md:hidden mt-4 space-y-2 glass-card rounded-xl p-4"
           >
-            <div className="container mx-auto px-4 py-4 space-y-2">
-              {navItems.map((item) => (
+            {navItems.map((item) => {
+              const isActive = item.isScroll ? location.pathname === "/" : location.pathname === item.path;
+              return (
                 <Link
-                  key={item.path}
+                  key={item.name}
                   to={item.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`block px-4 py-2 rounded-lg transition-colors ${
-                    location.pathname === item.path
-                      ? "bg-primary text-primary-foreground"
-                      : "hover:bg-secondary"
+                  onClick={(e) => handleNavClick(item, e)}
+                  className={`block text-sm font-medium transition-colors hover:text-primary px-4 py-2 rounded-lg ${
+                    isActive ? "text-primary bg-primary/10" : "text-foreground/80"
                   }`}
                 >
                   {item.name}
                 </Link>
-              ))}
-            </div>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>

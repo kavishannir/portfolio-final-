@@ -70,11 +70,11 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-5xl md:text-6xl font-bold mb-4">
               <span className="text-gradient-animate">Let's Connect</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Have a project in mind or just want to chat? Feel free to reach out!
+              Have a project in mind? Let's create something amazing together
             </p>
           </motion.div>
 
@@ -138,7 +138,7 @@ const Contact = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-primary hover:bg-accent text-primary-foreground glow-gold-hover"
+                  className="w-full bg-primary text-primary-foreground glow-purple hover:scale-105 transition-transform"
                   size="lg"
                 >
                   {isSubmitting ? (
@@ -176,9 +176,9 @@ const Contact = () => {
                         transition={{ delay: 0.4 + index * 0.1 }}
                         className="flex items-start space-x-4"
                       >
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
-                          <Icon className="w-6 h-6 text-primary-foreground" />
-                        </div>
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-purple-blue flex items-center justify-center flex-shrink-0 glow-purple">
+                    <Icon className="w-6 h-6 text-white" />
+                  </div>
                         <div>
                           <p className="text-sm text-muted-foreground">{info.label}</p>
                           {info.link ? (
