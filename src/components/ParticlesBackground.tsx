@@ -26,7 +26,7 @@ const ParticlesBackground = () => {
             },
             onHover: {
               enable: true,
-              mode: "repulse",
+              mode: ["grab", "bubble"],
             },
             resize: true,
           },
@@ -34,8 +34,21 @@ const ParticlesBackground = () => {
             push: {
               quantity: 4,
             },
+            grab: {
+              distance: 200,
+              links: {
+                opacity: 0.8,
+                color: "#6C63FF",
+              },
+            },
+            bubble: {
+              distance: 250,
+              size: 6,
+              duration: 2,
+              opacity: 0.8,
+            },
             repulse: {
-              distance: 100,
+              distance: 150,
               duration: 0.4,
             },
           },
@@ -48,8 +61,12 @@ const ParticlesBackground = () => {
             color: "#6C63FF",
             distance: 150,
             enable: true,
-            opacity: 0.4,
+            opacity: 0.3,
             width: 1,
+            triangles: {
+              enable: true,
+              opacity: 0.1,
+            },
           },
           move: {
             direction: "none",
@@ -57,25 +74,47 @@ const ParticlesBackground = () => {
             outModes: {
               default: "bounce",
             },
-            random: false,
-            speed: 1,
+            random: true,
+            speed: 1.5,
             straight: false,
+            attract: {
+              enable: true,
+              rotateX: 600,
+              rotateY: 1200,
+            },
           },
           number: {
             density: {
               enable: true,
               area: 800,
             },
-            value: 80,
+            value: 100,
           },
           opacity: {
-            value: 0.5,
+            value: { min: 0.3, max: 0.7 },
+            animation: {
+              enable: true,
+              speed: 1,
+              minimumValue: 0.3,
+            },
           },
           shape: {
-            type: "circle",
+            type: ["circle", "triangle"],
           },
           size: {
-            value: { min: 1, max: 3 },
+            value: { min: 1, max: 4 },
+            animation: {
+              enable: true,
+              speed: 2,
+              minimumValue: 1,
+            },
+          },
+          twinkle: {
+            particles: {
+              enable: true,
+              frequency: 0.05,
+              opacity: 1,
+            },
           },
         },
         detectRetina: true,
