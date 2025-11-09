@@ -151,7 +151,7 @@ const EducationSection = () => {
     <section 
       id="education" 
       ref={ref} 
-      className="min-h-screen py-20 relative overflow-hidden"
+      className="min-h-screen py-12 sm:py-16 md:py-20 relative overflow-visible sm:overflow-hidden"
       style={{
         background: 'linear-gradient(180deg, rgba(108, 99, 255, 0.05) 0%, rgba(0, 255, 255, 0.05) 50%, rgba(108, 99, 255, 0.05) 100%)',
       }}
@@ -167,8 +167,8 @@ const EducationSection = () => {
 
       {/* Gradient beams */}
       <div className="absolute inset-0 -z-10 neon-beam opacity-20" />
-      <div className="floating-orb w-96 h-96 bg-primary top-20 right-10 opacity-20" />
-      <div className="floating-orb w-80 h-80 bg-secondary bottom-20 left-10 opacity-20" style={{ animationDelay: '2s' }} />
+      <div className="floating-orb w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-primary top-10 right-4 sm:top-20 sm:right-10 opacity-20" />
+      <div className="floating-orb w-40 h-40 sm:w-56 sm:h-56 md:w-80 md:h-80 bg-secondary bottom-10 left-4 sm:bottom-20 sm:left-10 opacity-20" style={{ animationDelay: '2s' }} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
         {/* Header */}
@@ -176,42 +176,42 @@ const EducationSection = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
             <span className="text-gradient-animate">
               <span className="underline decoration-primary">Education</span>
               {' & '}
               <span className="underline decoration-primary">Achievements</span>
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground px-4">
             Academic journey and professional milestones
           </p>
         </motion.div>
 
         {/* Education Section */}
-        <div className="mb-20 relative">
+        <div className="mb-12 sm:mb-16 md:mb-20 relative">
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.2 }}
-            className="mb-12 inline-block"
+            className="mb-8 sm:mb-10 md:mb-12 inline-block"
           >
             <motion.h3
-              className="text-3xl font-bold flex items-center gap-3 px-6 py-3 rounded-lg border-2 border-primary/40 relative"
+              className="text-xl sm:text-2xl md:text-3xl font-bold flex items-center gap-2 sm:gap-3 px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg border-2 border-primary/40 relative"
               style={{
                 boxShadow: '0 0 15px rgba(108, 99, 255, 0.3), inset 0 0 15px rgba(108, 99, 255, 0.1)',
                 background: 'linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(108, 99, 255, 0.05))',
               }}
             >
-              <GraduationCap className="w-8 h-8 text-primary" />
-              <span className="text-gradient-animate">Academic Background</span>
+              <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-primary" />
+              <span className="text-gradient-animate text-sm sm:text-base md:text-lg">Academic Background</span>
             </motion.h3>
           </motion.div>
           
           {/* Connecting Timeline Line - Positioned to connect all items */}
-          <div className="absolute left-8 md:left-12 top-20 bottom-4 w-0.5">
+          <div className="absolute left-4 sm:left-6 md:left-8 lg:left-12 top-16 sm:top-20 bottom-4 w-0.5">
             <motion.div
               initial={{ scaleY: 0 }}
               animate={isInView ? { scaleY: 1 } : {}}
@@ -221,7 +221,7 @@ const EducationSection = () => {
             />
           </div>
 
-          <div className="space-y-8 ml-12 md:ml-16">
+          <div className="space-y-6 sm:space-y-8 ml-8 sm:ml-10 md:ml-12 lg:ml-16 relative z-10">
             {education.map((edu, index) => (
               <motion.div
                 key={edu.institution}
@@ -229,14 +229,14 @@ const EducationSection = () => {
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.3 + index * 0.2 }}
                 whileHover={{ x: 10 }}
-                className="glass-premium rounded-2xl p-8 glow-hover relative"
+                className="glass-premium rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 glow-hover relative"
               >
                 {/* Horizontal Connector Line from card to timeline */}
                 <div 
-                  className="absolute top-10 h-0.5 bg-gradient-to-r from-[#6C63FF]/70 to-[#00FFFF]/70 opacity-70 z-5"
+                  className="absolute top-8 sm:top-10 h-0.5 bg-gradient-to-r from-[#6C63FF]/70 to-[#00FFFF]/70 opacity-70 z-5"
                   style={{
-                    left: '-1rem',
-                    width: '1rem',
+                    left: '-0.75rem',
+                    width: '0.75rem',
                   }}
                 />
                 
@@ -245,18 +245,18 @@ const EducationSection = () => {
                   initial={{ scale: 0, opacity: 0 }}
                   animate={isInView ? { scale: 1, opacity: 1 } : {}}
                   transition={{ delay: 0.6 + index * 0.2, type: "spring", stiffness: 200 }}
-                  className="absolute top-10 w-5 h-5 rounded-full bg-gradient-to-br from-[#6C63FF] to-[#00FFFF] border-4 border-background z-10 shadow-lg shadow-[#6C63FF]/60"
+                  className="absolute top-8 sm:top-10 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gradient-to-br from-[#6C63FF] to-[#00FFFF] border-2 sm:border-4 border-background z-10 shadow-lg shadow-[#6C63FF]/60"
                   style={{ 
-                    left: '-1rem',
+                    left: '-0.75rem',
                     transform: 'translateX(-50%)',
                   }}
                 />
                 
-                <div className="flex items-start gap-6">
+                <div className="flex items-start gap-3 sm:gap-4 md:gap-6">
                   <motion.div 
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
-                    className="w-16 h-16 rounded-2xl bg-gradient-purple-blue flex items-center justify-center flex-shrink-0 glow-purple overflow-hidden"
+                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-gradient-purple-blue flex items-center justify-center flex-shrink-0 glow-purple overflow-hidden"
                   >
                     {edu.logoImage ? (
                       <img 
@@ -265,13 +265,13 @@ const EducationSection = () => {
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <GraduationCap className="w-8 h-8 text-white" />
+                      <GraduationCap className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                     )}
                   </motion.div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-1">{edu.qualification}</h3>
-                    <p className="text-lg text-primary font-semibold mb-1">{edu.institution}</p>
-                    <p className="text-sm text-muted-foreground mb-4">{edu.duration}</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 break-words">{edu.qualification}</h3>
+                    <p className="text-base sm:text-lg text-primary font-semibold mb-1 break-words">{edu.institution}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">{edu.duration}</p>
 
                     <p className="text-foreground/70 mb-4 leading-relaxed">
                       {edu.description}
@@ -318,17 +318,17 @@ const EducationSection = () => {
             className="mb-8 inline-block"
           >
             <motion.h3
-              className="text-4xl font-bold flex items-center gap-3 px-6 py-3 rounded-lg border-2 border-primary/40 relative"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold flex items-center gap-2 sm:gap-3 px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg border-2 border-primary/40 relative"
               style={{
                 boxShadow: '0 0 15px rgba(108, 99, 255, 0.3), inset 0 0 15px rgba(108, 99, 255, 0.1)',
                 background: 'linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(108, 99, 255, 0.05))',
               }}
             >
-              <Trophy className="w-9 h-9 text-primary" />
-              <span className="text-gradient-animate">Certifications & Awards</span>
+              <Trophy className="w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9 text-primary" />
+              <span className="text-gradient-animate text-sm sm:text-base md:text-lg">Certifications & Awards</span>
             </motion.h3>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {achievements.map((achievement, index) => (
               <motion.div
                 key={achievement.title}
@@ -336,7 +336,7 @@ const EducationSection = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
                 whileHover={{ y: -10 }}
-                className="glass-premium rounded-2xl p-4 glow-hover"
+                className="glass-premium rounded-xl sm:rounded-2xl p-3 sm:p-4 glow-hover"
               >
                 {/* Certificate Image Area - Same as Projects */}
                 <div className="aspect-video bg-gradient-purple-blue rounded-xl mb-3 flex items-center justify-center overflow-hidden relative">
@@ -360,8 +360,8 @@ const EducationSection = () => {
                 )}
               </div>
                 
-                <h4 className="text-lg font-bold mb-1">{achievement.title}</h4>
-                <p className="text-xs text-foreground/70 mb-1">{achievement.issuer}</p>
+                <h4 className="text-sm sm:text-base md:text-lg font-bold mb-1 break-words">{achievement.title}</h4>
+                <p className="text-xs text-foreground/70 mb-1 break-words">{achievement.issuer}</p>
                 <p className="text-xs text-primary font-semibold">{achievement.year}</p>
               </motion.div>
             ))}

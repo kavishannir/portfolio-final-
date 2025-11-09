@@ -171,29 +171,29 @@ const SkillsProjectsSection = () => {
   ];
 
   return (
-    <section id="skills-projects" ref={ref} className="min-h-screen py-20 relative overflow-hidden gradient-blur-purple">
+    <section id="skills-projects" ref={ref} className="min-h-screen py-12 sm:py-16 md:py-20 relative overflow-visible sm:overflow-hidden gradient-blur-purple">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
             <span className="text-gradient-animate">
               <span className="underline decoration-primary">Skills</span>
               {' & '}
               <span className="underline decoration-primary">Projects</span>
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground px-4">
             Click on a skill to see related projects
           </p>
         </motion.div>
 
         {/* Skills Graph */}
-        <div className="mb-20">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="mb-12 sm:mb-16 md:mb-20">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.name}
@@ -215,7 +215,7 @@ const SkillsProjectsSection = () => {
                 />
                 
                 <motion.div
-                  className={`glass-premium rounded-2xl p-6 text-center glow-hover relative z-10 ${
+                  className={`glass-premium rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 text-center glow-hover relative z-10 ${
                     selectedSkill === skill.name ? 'ring-2 ring-primary' : ''
                   }`}
                   animate={{
@@ -233,7 +233,7 @@ const SkillsProjectsSection = () => {
                     repeatDelay: (skills.length - 1) * 0.8
                   }}
                 >
-                  <div className="relative w-16 h-16 mx-auto mb-4">
+                  <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-2 sm:mb-3 md:mb-4">
                     <motion.div
                       className="absolute inset-0 rounded-xl"
                       animate={{
@@ -253,7 +253,7 @@ const SkillsProjectsSection = () => {
                       }}
                     />
                     <motion.div 
-                      className={`w-16 h-16 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center p-2 relative z-10 border-2 border-[#6C63FF]/30`}
+                      className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center p-1.5 sm:p-2 relative z-10 border-2 border-[#6C63FF]/30`}
                       animate={{
                         scale: [1, 1.15, 1],
                         y: [0, -8, 0]
@@ -273,8 +273,8 @@ const SkillsProjectsSection = () => {
                       />
                     </motion.div>
                   </div>
-                  <h3 className="font-bold mb-1">{skill.name}</h3>
-                  <p className="text-sm text-muted-foreground">{skill.category}</p>
+                  <h3 className="text-xs sm:text-sm md:text-base font-bold mb-0.5 sm:mb-1">{skill.name}</h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{skill.category}</p>
                   
                   {/* Connection lines */}
                   {selectedSkill === skill.name && (
@@ -296,7 +296,7 @@ const SkillsProjectsSection = () => {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.6 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-12"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-10 md:mb-12"
         >
           <span className="text-gradient">
             <span className="underline decoration-primary">Featured</span>
@@ -305,7 +305,7 @@ const SkillsProjectsSection = () => {
           </span>
         </motion.h3>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -313,7 +313,7 @@ const SkillsProjectsSection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.7 + index * 0.1, duration: 0.6 }}
               whileHover={{ y: -10 }}
-              className="glass-premium rounded-2xl p-6 glow-hover"
+              className="glass-premium rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 glow-hover"
             >
               <div className="aspect-video bg-gradient-purple-blue rounded-xl mb-4 flex items-center justify-center overflow-hidden relative">
                 {project.image ? (
