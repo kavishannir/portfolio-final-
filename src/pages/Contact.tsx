@@ -58,10 +58,10 @@ const Contact = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8 gradient-blur-navy relative">
-        {/* Floating gradient orbs */}
-        <div className="floating-orb w-96 h-96 bg-primary top-20 left-20" style={{ animationDelay: '1s' }} />
-        <div className="floating-orb w-80 h-80 bg-accent bottom-20 right-20" style={{ animationDelay: '3s' }} />
+      <div className="min-h-screen pt-16 sm:pt-20 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 gradient-blur-navy relative">
+        {/* Floating gradient orbs - Smaller on mobile */}
+        <div className="floating-orb w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-primary top-10 left-4 sm:top-20 sm:left-20 opacity-50 sm:opacity-100" style={{ animationDelay: '1s' }} />
+        <div className="floating-orb w-40 h-40 sm:w-56 sm:h-56 md:w-80 md:h-80 bg-accent bottom-10 right-4 sm:bottom-20 sm:right-20 opacity-50 sm:opacity-100" style={{ animationDelay: '3s' }} />
         
         <div className="container mx-auto max-w-6xl relative z-10">
           {/* Header */}
@@ -70,26 +70,26 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
               <span className="text-gradient-animate">Let's Connect</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
               Have a project in mind? Let's create something amazing together
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="glass-premium rounded-2xl p-8"
+              className="glass-premium rounded-2xl p-4 sm:p-6 md:p-8"
             >
-              <h2 className="text-2xl font-bold text-foreground mb-6">Send a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">Send a Message</h2>
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
                     Name
                   </label>
                   <Input
@@ -100,13 +100,13 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your name"
-                    className="bg-secondary border-border focus:border-primary text-black font-bold"
+                    className="bg-secondary border-border focus:border-primary text-black font-bold text-sm sm:text-base"
                     style={{ fontWeight: 500 }}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
                     Email
                   </label>
                   <Input
@@ -117,13 +117,13 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="your.email@example.com"
-                    className="bg-secondary border-border focus:border-primary text-black font-bold"
+                    className="bg-secondary border-border focus:border-primary text-black font-bold text-sm sm:text-base"
                     style={{ fontWeight: 500 }}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
                     Message
                   </label>
                   <Textarea
@@ -133,7 +133,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell me about your project..."
-                    className="bg-secondary border-border focus:border-primary min-h-[150px] text-black font-bold"
+                    className="bg-secondary border-border focus:border-primary min-h-[120px] sm:min-h-[150px] text-black font-bold text-sm sm:text-base"
                     style={{ fontWeight: 500 }}
                   />
                 </div>
@@ -159,16 +159,16 @@ const Contact = () => {
             </motion.div>
 
             {/* Contact Info & CTA */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {/* Contact Information */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
-                className="glass-premium rounded-2xl p-8"
+                className="glass-premium rounded-2xl p-4 sm:p-6 md:p-8"
               >
-                <h2 className="text-2xl font-bold text-foreground mb-6">Contact Information</h2>
-                <div className="space-y-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">Contact Information</h2>
+                <div className="space-y-4 sm:space-y-6">
                   {contactInfo.map((info, index) => {
                     const Icon = info.icon;
                     return (
@@ -177,22 +177,22 @@ const Contact = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 + index * 0.1 }}
-                        className="flex items-start space-x-4"
+                        className="flex items-start space-x-3 sm:space-x-4"
                       >
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-purple-blue flex items-center justify-center flex-shrink-0 glow-purple">
-                    <Icon className="w-6 h-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-purple-blue flex items-center justify-center flex-shrink-0 glow-purple">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
-                        <div>
-                          <p className="text-sm text-muted-foreground">{info.label}</p>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs sm:text-sm text-muted-foreground">{info.label}</p>
                           {info.link ? (
                             <a
                               href={info.link}
-                              className="text-foreground font-medium hover:text-primary transition-colors"
+                              className="text-sm sm:text-base text-foreground font-medium hover:text-primary transition-colors break-words"
                             >
                               {info.value}
                             </a>
                           ) : (
-                            <p className="text-foreground font-medium">{info.value}</p>
+                            <p className="text-sm sm:text-base text-foreground font-medium break-words">{info.value}</p>
                           )}
                         </div>
                       </motion.div>
@@ -201,15 +201,15 @@ const Contact = () => {
                 </div>
               </motion.div>
 
-              {/* Download CV */}
+{/* Download CV */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.6 }}
-                className="glass-premium rounded-2xl p-8 text-center"
+                className="glass-premium rounded-2xl p-4 sm:p-6 md:p-8 text-center"
               >
-                <h3 className="text-xl font-bold text-foreground mb-4">Interested in my work?</h3>
-                <p className="text-muted-foreground mb-6">
+                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 sm:mb-4">Interested in my work?</h3>
+                <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">
                   Download my CV to learn more about my experience and qualifications.
                 </p>
                 <Button
@@ -226,16 +226,16 @@ const Contact = () => {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.7 }}
-                className="glass-premium rounded-2xl p-6 border border-primary/30"
+                className="glass-premium rounded-2xl p-4 sm:p-5 md:p-6 border border-primary/30"
               >
-                <div className="flex items-center space-x-3">
-                  <div className="relative">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-glow-pulse" />
+                <div className="flex items-center space-x-2 sm:space-x-3">
+                  <div className="relative flex-shrink-0">
+                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-glow-pulse" />
                     <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75" />
                   </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Available for opportunities</p>
-                    <p className="text-sm text-muted-foreground">Open to freelance projects and full-time roles</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm sm:text-base font-semibold text-foreground">Available for opportunities</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Open to freelance projects and full-time roles</p>
                   </div>
                 </div>
               </motion.div>

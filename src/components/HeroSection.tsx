@@ -165,16 +165,16 @@ const HeroSection = () => {
         </Canvas>
       </div>
 
-      {/* Profile Image - Right Upper Part */}
+      {/* Profile Image - Responsive positioning - Hidden on very small screens, shown from sm up */}
       <motion.div
         animate={imageControls}
-        className="absolute right-12 top-24 md:right-20 md:top-32 z-20"
+        className="hidden sm:block absolute right-4 top-20 sm:right-8 sm:top-24 md:right-12 md:top-28 lg:right-20 lg:top-32 z-20"
       >
         <div className="relative group">
           <img
             src={profileImage}
             alt="Kavishan Profile"
-            className="w-60 h-76 md:w-[18rem] md:h-[22rem] lg:w-[22rem] lg:h-[26rem] object-cover relative z-10 rounded-3xl brightness-90 border-[6px] border-[#6C63FF]"
+            className="w-32 h-40 sm:w-40 sm:h-48 md:w-60 md:h-72 lg:w-[18rem] lg:h-[22rem] xl:w-[22rem] xl:h-[26rem] object-cover relative z-10 rounded-2xl sm:rounded-3xl brightness-90 border-2 sm:border-4 md:border-[6px] border-[#6C63FF]"
             style={{
               boxShadow: '0 0 10px rgba(108, 99, 255, 0.4), 0 0 80px rgba(108, 99, 255, 0.3), 0 0 120px rgba(108, 99, 255, 0.2)',
             }}
@@ -182,7 +182,7 @@ const HeroSection = () => {
         </div>
       </motion.div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16 sm:pt-12 md:pt-16">
         <motion.div
           initial={{ opacity: 0, y: 50, x: 0 }}
           animate={{ opacity: 1, y: 0 }}
@@ -196,9 +196,9 @@ const HeroSection = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6"
             >
-              <div className="inline-block px-4 py-2 md:px-6 md:py-3 rounded-xl bg-[#6C63FF]/20 border border-[#6C63FF]/40">
+              <div className="inline-block px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded-xl bg-[#6C63FF]/20 border border-[#6C63FF]/40">
                 <span 
                   className="text-gradient-animate"
                   style={{
@@ -215,12 +215,12 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg md:text-2xl lg:text-3xl text-muted-foreground mb-4"
+              className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl text-muted-foreground mb-3 sm:mb-4 flex flex-wrap gap-1 sm:gap-2"
             >
               <span className="border-b-2 border-[#6C63FF]">Developer</span>
-              {' | '}
+              <span className="hidden sm:inline">{' | '}</span>
               <span className="border-b-2 border-[#6C63FF]">Salesforce Enthusiast</span>
-              {' | '}
+              <span className="hidden sm:inline">{' | '}</span>
               <span className="border-b-2 border-[#6C63FF]">DevOps Learner</span>
             </motion.p>
 
@@ -228,10 +228,10 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="mb-8"
+              className="mb-4 sm:mb-6 md:mb-8"
             >
               <span 
-                className="inline-block px-4 py-2 md:px-6 md:py-3 rounded-lg text-base md:text-lg lg:text-xl font-medium text-[#E0D9FF]"
+                className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 md:px-6 md:py-3 rounded-lg text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-medium text-[#E0D9FF]"
                 style={{
                   background: 'linear-gradient(135deg, rgba(108, 99, 255, 0.15), rgba(108, 99, 255, 0.1))',
                   border: '2px solid rgba(108, 99, 255, 0.4)',
@@ -246,39 +246,39 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex gap-4 justify-start items-center mb-12"
+              className="flex gap-2 sm:gap-3 md:gap-4 justify-start items-center mb-6 sm:mb-8 md:mb-12 flex-wrap"
             >
               <a
                 href="https://github.com/kavishannir"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full glass-card flex items-center justify-center glow-hover"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full glass-card flex items-center justify-center glow-hover"
               >
-                <Github className="w-6 h-6" />
+                <Github className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
               <a
                 href="https://www.linkedin.com/in/kavishan-krishan-243a83300"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full glass-card flex items-center justify-center glow-hover"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full glass-card flex items-center justify-center glow-hover"
               >
-                <Linkedin className="w-6 h-6" />
+                <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
               <a
                 href="https://x.com/kavisha29512457?t=AK_B9S8ndFBByaQpVkPcxw&s=09"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full glass-card flex items-center justify-center glow-hover"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full glass-card flex items-center justify-center glow-hover"
               >
-                <Twitter className="w-6 h-6" />
+                <Twitter className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full glass-card flex items-center justify-center glow-hover"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full glass-card flex items-center justify-center glow-hover"
               >
-                <Instagram className="w-6 h-6" />
+                <Instagram className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
             </motion.div>
 
@@ -286,18 +286,18 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="flex gap-4 justify-start flex-wrap"
+              className="flex gap-3 sm:gap-4 justify-start flex-wrap"
             >
               <Link
                 to="/contact"
-                className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-semibold glow-purple hover:scale-105 transition-transform"
+                className="px-4 py-2 sm:px-6 sm:py-2.5 md:px-8 md:py-3 bg-primary text-primary-foreground rounded-full text-sm sm:text-base font-semibold glow-purple hover:scale-105 transition-transform"
               >
                 Get In Touch
               </Link>
               <a
                 href="/cv.pdf"
                 download
-                className="px-8 py-3 glass-card rounded-full font-semibold glow-hover"
+                className="px-4 py-2 sm:px-6 sm:py-2.5 md:px-8 md:py-3 glass-card rounded-full text-sm sm:text-base font-semibold glow-hover"
               >
                 Download CV
               </a>
@@ -310,16 +310,16 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.6 }}
-          className="absolute bottom-2 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-2 sm:bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 z-10"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="flex flex-col items-center gap-2 cursor-pointer"
+            className="flex flex-col items-center gap-1 sm:gap-2 cursor-pointer"
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            <span className="text-base md:text-lg font-bold text-muted-foreground">Scroll Down</span>
-            <ChevronDown className="w-6 h-6 text-primary" />
+            <span className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-muted-foreground">Scroll Down</span>
+            <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary" />
           </motion.div>
         </motion.div>
       </div>

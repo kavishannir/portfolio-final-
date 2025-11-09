@@ -104,9 +104,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-card py-4 px-4 sm:px-6 lg:px-8 border-b border-primary/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-card py-2 sm:py-3 md:py-4 px-3 sm:px-4 md:px-6 lg:px-8 border-b border-primary/20">
       <div className="container mx-auto flex items-center justify-between">
-        <Link to="/" className="text-2xl font-bold" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <Link to="/" className="text-lg sm:text-xl md:text-2xl font-bold" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <span className="text-gradient-animate">Kavishan</span>
         </Link>
 
