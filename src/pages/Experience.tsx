@@ -1,41 +1,29 @@
 import { motion } from "framer-motion";
 import { Briefcase } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
+import companyLogo from "../images.jpg";
+
+// Helper function to format achievements with bold key metrics
+const formatAchievement = (text: string) => {
+  return text
+    .replace(/(\d+%|\d+x|\d+\.\d+%)/g, '<strong>$1</strong>')
+    .replace(/(AWS\/Azure|microservices platform|monolithic legacy application|cloud-native|database queries|application logic|user traffic|server scaling|system latency|developer deployment speed|infrastructure costs|uptime)/gi, '<strong>$1</strong>');
+};
 
 const Experience = () => {
   const experiences = [
     {
-      company: "Tech Solutions Inc.",
-      role: "Salesforce Developer",
-      duration: "2023 - Present",
-      description: "Leading Salesforce development initiatives, creating custom Lightning components, and implementing automated workflows using Flow Builder and Apex triggers.",
+      company: "CODEVITA Pvt Ltd",
+      role: "QA Software Engineer",
+      duration: "2025 - Present",
+      location: "Jaffna, Sri Lanka",
+      description: "Leading full-cycle software delivery for a leading tech company, from architecting robust backend systems to crafting responsive, user-centric front-end interfaces that drive product engagement.",
       achievements: [
-        "Developed 5+ Lightning web components improving user productivity by 40%",
-        "Implemented automated workflows reducing manual tasks by 60%",
-        "Mentored junior developers on Salesforce best practices",
+        "Led cross-functional team to deliver new microservices platform, cutting latency 40% and boosting deployment speed 3x.",
+        "Migrated monolithic app to cloud-native architecture on AWS/Azure, slashing infrastructure costs 60% while maintaining 99.9% uptime.",
+        "Optimized database queries and application logic, supporting 300% user growth without additional server scaling.",
       ],
-    },
-    {
-      company: "Digital Innovations Ltd.",
-      role: "Full-Stack Developer Intern",
-      duration: "2022 - 2023",
-      description: "Contributed to web application development using React and Node.js, collaborated with cross-functional teams, and participated in agile development processes.",
-      achievements: [
-        "Built responsive web applications serving 1000+ users",
-        "Optimized database queries improving performance by 35%",
-        "Participated in code reviews and sprint planning",
-      ],
-    },
-    {
-      company: "CloudTech Systems",
-      role: "Junior Developer",
-      duration: "2021 - 2022",
-      description: "Assisted in developing and maintaining web applications, performed bug fixes, and contributed to documentation and testing efforts.",
-      achievements: [
-        "Resolved 50+ bug tickets with 95% success rate",
-        "Created comprehensive technical documentation",
-        "Collaborated with QA team for thorough testing",
-      ],
+      logoImage: companyLogo,
     },
   ];
 
@@ -89,13 +77,28 @@ const Experience = () => {
                     >
                       {/* Header */}
                       <div className="flex items-start space-x-4 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
-                          <Briefcase className="w-6 h-6 text-primary-foreground" />
-                        </div>
+                        <motion.div 
+                          whileHover={{ rotate: 360, scale: 1.1 }}
+                          transition={{ duration: 0.6 }}
+                          className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0 overflow-hidden"
+                        >
+                          {exp.logoImage ? (
+                            <img 
+                              src={exp.logoImage} 
+                              alt={exp.company}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <Briefcase className="w-6 h-6 text-primary-foreground" />
+                          )}
+                        </motion.div>
                         <div className="flex-1">
-                          <h3 className="text-xl font-bold text-foreground">{exp.role}</h3>
+                          <h3 className="text-xl font-bold text-foreground underline decoration-primary">{exp.role}</h3>
                           <p className="text-primary font-semibold">{exp.company}</p>
                           <p className="text-sm text-muted-foreground">{exp.duration}</p>
+                          {exp.location && (
+                            <p className="text-sm text-muted-foreground">{exp.location}</p>
+                          )}
                         </div>
                       </div>
 
@@ -117,7 +120,12 @@ const Experience = () => {
                               className="text-sm text-foreground/70 flex items-start"
                             >
                               <span className="text-primary mr-2">•</span>
-                              <span>{achievement}</span>
+                              <span 
+                                className="font-medium"
+                                dangerouslySetInnerHTML={{
+                                  __html: formatAchievement(achievement)
+                                }} 
+                              />
                             </motion.li>
                           ))}
                         </ul>

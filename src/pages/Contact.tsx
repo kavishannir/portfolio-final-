@@ -45,13 +45,13 @@ const Contact = () => {
     {
       icon: Phone,
       label: "Phone",
-      value: "+94 77 123 4567",
-      link: "tel:+94771234567",
+      value: "0741607240",
+      link: "tel:+94741607240",
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "Colombo, Sri Lanka",
+      value: "JAFFNA, SriLanka",
       link: null,
     },
   ];
@@ -100,7 +100,8 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your name"
-                    className="bg-secondary border-border focus:border-primary"
+                    className="bg-secondary border-border focus:border-primary text-black font-bold"
+                    style={{ fontWeight: 500 }}
                   />
                 </div>
 
@@ -116,7 +117,8 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="your.email@example.com"
-                    className="bg-secondary border-border focus:border-primary"
+                    className="bg-secondary border-border focus:border-primary text-black font-bold"
+                    style={{ fontWeight: 500 }}
                   />
                 </div>
 
@@ -131,7 +133,8 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell me about your project..."
-                    className="bg-secondary border-border focus:border-primary min-h-[150px]"
+                    className="bg-secondary border-border focus:border-primary min-h-[150px] text-black font-bold"
+                    style={{ fontWeight: 500 }}
                   />
                 </div>
 

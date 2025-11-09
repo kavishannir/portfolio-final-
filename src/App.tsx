@@ -12,9 +12,10 @@ import ParticlesBackground from "./components/ParticlesBackground";
 import HeroSection from "./components/HeroSection";
 import AboutMeSection from "./components/AboutMeSection";
 import SkillsProjectsSection from "./components/SkillsProjectsSection";
-import WorkshopsSection from "./components/WorkshopsSection";
 import ExperienceSection from "./components/ExperienceSection";
+import EducationSection from "./components/EducationSection";
 import EducationAchievements from "./pages/EducationAchievements";
+import Workshops from "./pages/Workshops";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -26,8 +27,8 @@ const HomePage = () => {
       <HeroSection />
       <AboutMeSection />
       <SkillsProjectsSection />
-      <WorkshopsSection />
       <ExperienceSection />
+      <EducationSection />
     </div>
   );
 };
@@ -44,6 +45,7 @@ const AppContent = () => {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/workshops" element={<Workshops />} />
           <Route path="/education" element={<EducationAchievements />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />

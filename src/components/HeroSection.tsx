@@ -1,8 +1,85 @@
 import { motion, useAnimation } from "framer-motion";
-import { ChevronDown, Github, Linkedin, Twitter } from "lucide-react";
+import { ChevronDown, Github, Linkedin, Twitter, Instagram } from "lucide-react";
 import { Canvas } from "@react-three/fiber";
 import { Float, Sphere, MeshDistortMaterial } from "@react-three/drei";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import profileImage from "../WhatsApp Image 2025-10-16 at 2.14.37 PM.jpeg";
+
+const ShiningParticles = () => {
+  const colors = ['#6C63FF', '#00FFFF', '#D1C4E9', '#FFFFFF'];
+  // Create more particles and bias towards purple
+  const particles = Array.from({ length: 80 }, (_, i) => {
+    // Bias color selection: 60% purple, 20% cyan, 15% lavender, 5% white
+    const rand = Math.random();
+    let colorIndex;
+    if (rand < 0.6) {
+      colorIndex = 0; // Purple
+    } else if (rand < 0.8) {
+      colorIndex = 1; // Cyan
+    } else if (rand < 0.95) {
+      colorIndex = 2; // Lavender
+    } else {
+      colorIndex = 3; // White
+    }
+    const moveX = (Math.random() - 0.5) * 40;
+    const moveY = (Math.random() - 0.5) * 40;
+    return {
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 50,
+      delay: Math.random() * 3,
+      duration: 3 + Math.random() * 4,
+      size: 2 + Math.random() * 3,
+      color: colors[colorIndex],
+      moveX,
+      moveY,
+    };
+  });
+
+  return (
+    <div className="absolute top-0 left-0 w-full h-1/2 overflow-hidden pointer-events-none -z-[5]">
+      {particles.map((particle) => (
+        <div
+          key={particle.id}
+          className="absolute rounded-full"
+          style={{
+            left: `${particle.left}%`,
+            top: `${particle.top}%`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            background: `radial-gradient(circle, ${particle.color} 0%, transparent 70%)`,
+            boxShadow: `0 0 ${particle.size * 2}px ${particle.color}`,
+            animation: `shine-${particle.id} ${particle.duration}s ease-in-out infinite`,
+            animationDelay: `${particle.delay}s`,
+          }}
+        />
+      ))}
+      <style>{`
+        ${particles.map((particle) => `
+          @keyframes shine-${particle.id} {
+            0%, 100% {
+              opacity: 0.3;
+              transform: translate(0, 0) scale(1);
+            }
+            25% {
+              opacity: 1;
+              transform: translate(${particle.moveX * 0.5}px, ${particle.moveY * 0.5}px) scale(1.2);
+            }
+            50% {
+              opacity: 0.6;
+              transform: translate(${particle.moveX}px, ${particle.moveY}px) scale(0.8);
+            }
+            75% {
+              opacity: 1;
+              transform: translate(${particle.moveX * 0.75}px, ${particle.moveY * 0.75}px) scale(1.1);
+            }
+          }
+        `).join('')}
+      `}</style>
+    </div>
+  );
+};
 
 const FloatingIcons = () => {
   return (
@@ -51,11 +128,15 @@ const HeroSection = () => {
   const imageControls = useAnimation();
 
   useEffect(() => {
-    // Trigger animation after 4 seconds
+    // Set initial values for image
+    imageControls.set({ opacity: 0, scale: 0.8 });
+    textControls.set({ x: "0%" });
+    
+    // Trigger animation after 2 seconds
     const timer = setTimeout(() => {
       setAnimationTriggered(true);
       textControls.start({
-        x: "25%",
+        x: "-5%",
         transition: { duration: 1, ease: "easeInOut" }
       });
       imageControls.start({
@@ -63,13 +144,16 @@ const HeroSection = () => {
         scale: 1,
         transition: { duration: 1, ease: "easeOut" }
       });
-    }, 4000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [textControls, imageControls]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Shining Particles in Upper Background */}
+      <ShiningParticles />
+      
       {/* 3D Background with Glowing Icons */}
       <div className="absolute inset-0 -z-10">
         <Canvas camera={{ position: [0, 0, 5] }}>
@@ -81,26 +165,20 @@ const HeroSection = () => {
         </Canvas>
       </div>
 
-      {/* Profile Image - Left Upper Part */}
+      {/* Profile Image - Right Upper Part */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
         animate={imageControls}
-        className="absolute left-8 top-24 md:left-16 md:top-32 z-20"
+        className="absolute right-12 top-24 md:right-20 md:top-32 z-20"
       >
         <div className="relative group">
-          {/* Glass effect container */}
-          <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-3xl overflow-hidden glass-premium glow-purple">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20" />
-            <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
-              alt="Kavishan Profile"
-              className="w-full h-full object-cover relative z-10"
-            />
-            {/* 3D Glass reflection overlay */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-300" />
-            {/* Glow effect on hover */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-accent opacity-0 group-hover:opacity-30 blur-2xl transition-opacity duration-500 -z-10" />
-          </div>
+          <img
+            src={profileImage}
+            alt="Kavishan Profile"
+            className="w-60 h-76 md:w-[18rem] md:h-[22rem] lg:w-[22rem] lg:h-[26rem] object-cover relative z-10 rounded-3xl brightness-90 border-[6px] border-[#6C63FF]"
+            style={{
+              boxShadow: '0 0 10px rgba(108, 99, 255, 0.4), 0 0 80px rgba(108, 99, 255, 0.3), 0 0 120px rgba(108, 99, 255, 0.2)',
+            }}
+          />
         </div>
       </motion.div>
 
@@ -112,34 +190,66 @@ const HeroSection = () => {
         >
           <motion.div
             animate={textControls}
-            className="text-center md:text-left"
+            className="text-left"
           >
             <motion.h1
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+              className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6"
             >
-              <span className="text-gradient-animate">Hi, I'm Kavishan</span>
+              <div className="inline-block px-4 py-2 md:px-6 md:py-3 rounded-xl bg-[#6C63FF]/20 border border-[#6C63FF]/40">
+                <span 
+                  className="text-gradient-animate"
+                  style={{
+                    color: '#E0D9FF',
+                    letterSpacing: '0.05em'
+                  }}
+                >
+                  Hi, I'm Kavishan
+                </span>
+              </div>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg md:text-2xl lg:text-3xl text-muted-foreground mb-8"
+              className="text-lg md:text-2xl lg:text-3xl text-muted-foreground mb-4"
             >
-              Developer | Salesforce Enthusiast | DevOps Learner
+              <span className="border-b-2 border-[#6C63FF]">Developer</span>
+              {' | '}
+              <span className="border-b-2 border-[#6C63FF]">Salesforce Enthusiast</span>
+              {' | '}
+              <span className="border-b-2 border-[#6C63FF]">DevOps Learner</span>
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="mb-8"
+            >
+              <span 
+                className="inline-block px-4 py-2 md:px-6 md:py-3 rounded-lg text-base md:text-lg lg:text-xl font-medium text-[#E0D9FF]"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(108, 99, 255, 0.15), rgba(108, 99, 255, 0.1))',
+                  border: '2px solid rgba(108, 99, 255, 0.4)',
+                  boxShadow: '0 0 15px rgba(108, 99, 255, 0.3), 0 0 30px rgba(108, 99, 255, 0.15), inset 0 0 20px rgba(108, 99, 255, 0.1)',
+                }}
+              >
+                "Your Competitors Hope You Don't Hire Me.!!!"
+              </span>
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex gap-4 justify-center md:justify-start items-center mb-12"
+              className="flex gap-4 justify-start items-center mb-12"
             >
               <a
-                href="https://github.com"
+                href="https://github.com/kavishannir"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full glass-card flex items-center justify-center glow-hover"
@@ -147,7 +257,7 @@ const HeroSection = () => {
                 <Github className="w-6 h-6" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/kavishan-krishan-243a83300"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full glass-card flex items-center justify-center glow-hover"
@@ -155,12 +265,20 @@ const HeroSection = () => {
                 <Linkedin className="w-6 h-6" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://x.com/kavisha29512457?t=AK_B9S8ndFBByaQpVkPcxw&s=09"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full glass-card flex items-center justify-center glow-hover"
               >
                 <Twitter className="w-6 h-6" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full glass-card flex items-center justify-center glow-hover"
+              >
+                <Instagram className="w-6 h-6" />
               </a>
             </motion.div>
 
@@ -168,14 +286,14 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="flex gap-4 justify-center md:justify-start flex-wrap"
+              className="flex gap-4 justify-start flex-wrap"
             >
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-semibold glow-purple hover:scale-105 transition-transform"
               >
                 Get In Touch
-              </a>
+              </Link>
               <a
                 href="/cv.pdf"
                 download
@@ -192,7 +310,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.6 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-2 left-1/2 transform -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
@@ -200,7 +318,7 @@ const HeroSection = () => {
             className="flex flex-col items-center gap-2 cursor-pointer"
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            <span className="text-sm text-muted-foreground">Scroll Down</span>
+            <span className="text-base md:text-lg font-bold text-muted-foreground">Scroll Down</span>
             <ChevronDown className="w-6 h-6 text-primary" />
           </motion.div>
         </motion.div>
