@@ -104,63 +104,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-card py-2 sm:py-3 md:py-4 px-3 sm:px-4 md:px-6 lg:px-8 border-b border-primary/20">
-      <div className="container mx-auto flex items-center justify-between">
-        <Link to="/" className="text-lg sm:text-xl md:text-2xl font-bold" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <span className="text-gradient-animate">Kavishan</span>
-        </Link>
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-50 glass-card py-2 sm:py-3 md:py-4 px-3 sm:px-4 md:px-6 lg:px-8 border-b border-primary/20">
+        <div className="container mx-auto flex items-center justify-between">
+          <Link to="/" className="text-lg sm:text-xl md:text-2xl font-bold" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <span className="text-gradient-animate">Kavishan</span>
+          </Link>
 
-        <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => {
-            const isActive = item.isScroll 
-              ? (location.pathname === "/" && activeSection === item.scrollTo)
-              : location.pathname === item.path;
-            const hasFrame = item.name === "Workshops" || item.name === "Contact";
-            return (
-              <Link
-                key={item.name}
-                to={item.path}
-                onClick={(e) => handleNavClick(item, e)}
-                className={`relative text-sm font-medium transition-all ${
-                  hasFrame 
-                    ? `px-4 py-2 rounded-lg border-2 ${
-                        isActive 
-                          ? "border-[#6C63FF] text-primary bg-[#6C63FF]/10 shadow-[0_0_15px_rgba(108,99,255,0.4)]" 
-                          : "border-[#6C63FF]/40 text-foreground/80 hover:border-[#6C63FF]/60 hover:bg-[#6C63FF]/5"
-                      }`
-                    : `hover:text-primary ${isActive ? "text-primary" : "text-foreground/80"}`
-                }`}
-              >
-                {item.name}
-                {!hasFrame && isActive && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-purple-blue glow-purple"
-                    initial={false}
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </Link>
-            );
-          })}
-        </div>
-
-        <button
-          className="md:hidden text-foreground p-2 rounded-lg glass-card hover:bg-primary/10"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden mt-4 space-y-2 glass-card rounded-xl p-4"
-          >
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => {
               const isActive = item.isScroll 
                 ? (location.pathname === "/" && activeSection === item.scrollTo)
@@ -171,26 +122,113 @@ const Navbar = () => {
                   key={item.name}
                   to={item.path}
                   onClick={(e) => handleNavClick(item, e)}
-                  className={`block text-sm font-medium transition-all px-4 py-2 rounded-lg ${
-                    hasFrame
-                      ? `border-2 ${
+                  className={`relative text-sm font-medium transition-all ${
+                    hasFrame 
+                      ? `px-4 py-2 rounded-lg border-2 ${
                           isActive 
                             ? "border-[#6C63FF] text-primary bg-[#6C63FF]/10 shadow-[0_0_15px_rgba(108,99,255,0.4)]" 
                             : "border-[#6C63FF]/40 text-foreground/80 hover:border-[#6C63FF]/60 hover:bg-[#6C63FF]/5"
                         }`
-                      : `hover:text-primary ${
-                          isActive ? "text-primary bg-primary/10" : "text-foreground/80"
-                        }`
+                      : `hover:text-primary ${isActive ? "text-primary" : "text-foreground/80"}`
                   }`}
                 >
                   {item.name}
+                  {!hasFrame && isActive && (
+                    <motion.div
+                      layoutId="navbar-indicator"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-purple-blue glow-purple"
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
                 </Link>
               );
             })}
-          </motion.div>
+          </div>
+
+          <button
+            className="md:hidden text-foreground p-2.5 rounded-lg glass-card hover:bg-primary/10 transition-colors z-50 relative"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+            />
+            
+            {/* Slide-in Menu */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-gradient-to-br from-background via-[#0a0a0f] to-[#0f0f1a] border-l border-primary/20 shadow-2xl z-50 md:hidden overflow-y-auto"
+            >
+              {/* Menu Header */}
+              <div className="flex items-center justify-between p-4 border-b border-primary/20">
+                <span className="text-xl font-bold text-gradient-animate">Menu</span>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
+                  aria-label="Close menu"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              {/* Menu Items */}
+              <div className="p-4 space-y-2">
+                {navItems.map((item, index) => {
+                  const isActive = item.isScroll 
+                    ? (location.pathname === "/" && activeSection === item.scrollTo)
+                    : location.pathname === item.path;
+                  const hasFrame = item.name === "Workshops" || item.name === "Contact";
+                  return (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                    >
+                      <Link
+                        to={item.path}
+                        onClick={(e) => handleNavClick(item, e)}
+                        className={`block text-base font-medium transition-all px-4 py-3 rounded-lg ${
+                          hasFrame
+                            ? `border-2 ${
+                                isActive 
+                                  ? "border-[#6C63FF] text-primary bg-[#6C63FF]/10 shadow-[0_0_15px_rgba(108,99,255,0.4)]" 
+                                  : "border-[#6C63FF]/40 text-foreground/80 hover:border-[#6C63FF]/60 hover:bg-[#6C63FF]/5"
+                              }`
+                            : `hover:text-primary hover:bg-primary/10 ${
+                                isActive ? "text-primary bg-primary/10" : "text-foreground/80"
+                              }`
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 };
 
