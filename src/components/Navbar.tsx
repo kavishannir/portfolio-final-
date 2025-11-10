@@ -105,9 +105,9 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 glass-card py-1.5 sm:py-3 md:py-4 px-2 sm:px-4 md:px-6 lg:px-8 border-b border-primary/20">
+      <nav className="fixed top-0 left-0 right-0 z-50 glass-card py-2 sm:py-3 md:py-4 px-3 sm:px-4 md:px-6 lg:px-8 border-b border-primary/20">
         <div className="container mx-auto flex items-center justify-between">
-          <Link to="/" className="text-base sm:text-xl md:text-2xl font-bold" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <Link to="/" className="text-lg sm:text-xl md:text-2xl font-bold" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <span className="text-gradient-animate">Kavishan</span>
           </Link>
 
@@ -147,11 +147,11 @@ const Navbar = () => {
           </div>
 
           <button
-            className="md:hidden text-foreground p-2 rounded-lg glass-card hover:bg-primary/10 transition-colors z-50 relative"
+            className="md:hidden text-foreground p-2.5 rounded-lg glass-card hover:bg-primary/10 transition-colors z-50 relative"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </nav>
@@ -175,22 +175,22 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-64 max-w-[75vw] bg-gradient-to-br from-background via-[#0a0a0f] to-[#0f0f1a] border-l border-primary/20 shadow-2xl z-50 md:hidden overflow-y-auto"
+              className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-gradient-to-br from-background via-[#0a0a0f] to-[#0f0f1a] border-l border-primary/20 shadow-2xl z-50 md:hidden overflow-y-auto"
             >
               {/* Menu Header */}
-              <div className="flex items-center justify-between p-3 border-b border-primary/20">
-                <span className="text-lg font-bold text-gradient-animate">Menu</span>
+              <div className="flex items-center justify-between p-4 border-b border-primary/20">
+                <span className="text-xl font-bold text-gradient-animate">Menu</span>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1.5 rounded-lg hover:bg-primary/10 transition-colors"
+                  className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
                   aria-label="Close menu"
                 >
-                  <X size={18} />
+                  <X size={20} />
                 </button>
               </div>
 
               {/* Menu Items */}
-              <div className="p-3 space-y-1.5">
+              <div className="p-4 space-y-2">
                 {navItems.map((item, index) => {
                   const isActive = item.isScroll 
                     ? (location.pathname === "/" && activeSection === item.scrollTo)
@@ -206,7 +206,7 @@ const Navbar = () => {
                       <Link
                         to={item.path}
                         onClick={(e) => handleNavClick(item, e)}
-                        className={`block text-sm font-medium transition-all px-3 py-2 rounded-lg ${
+                        className={`block text-base font-medium transition-all px-4 py-3 rounded-lg ${
                           hasFrame
                             ? `border-2 ${
                                 isActive 
