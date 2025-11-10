@@ -5,7 +5,8 @@ import GlassCubesGallery from "@/components/GlassCubesGallery";
 import week1Image from "../week1-1.jpeg";
 import week2Image from "../week2-2.jpeg";
 import week3Image from "../123kavi.jpeg";
-import week4Image from "../WhatsApp Image 2025-10-13 at 8.35.40 PM.jpeg";
+import week4Image from "../week 4 (2).jpeg";
+import week5Image from "../week5 (1).jpeg";
 import week6Image from "../week6 (1).jpeg";
 import week7Image from "../week7 (1).jpeg";
 import week8Image from "../week8 (1).jpeg";
@@ -23,7 +24,7 @@ const Workshops = () => {
       title: "Professional Skills",
       organizer: "SLIIT",
       date: " 2025",
-      location: "Colombo, Sri Lanka",
+      location: "Lecture hall, SLIIT",
       attendees: "full",
       description: "Learned how to develop core abilities like communication, teamwork, and time management needed for workplace success.",
       color: "#00A1E0",
@@ -34,7 +35,7 @@ const Workshops = () => {
       title: "employbility skills",
       organizer: "SLIIT",
       date: " 2025",
-      location: "Online",
+      location: "Lecture hall, SLIIT",
       attendees: "full",
       description: "Understood what makes a candidate job-ready — including adaptability, problem-solving, and presentation skills..",
       color: "#2496ED",
@@ -45,7 +46,7 @@ const Workshops = () => {
       title: "Mock interview",
       organizer: "Tech Meetup Sri Lanka",
       date: "2025",
-      location: "Kandy, Sri Lanka",
+      location: "Lecture hall, SLIIT",
       attendees:"full",
       description: "Learned the importance of positive attitude, ethics, and personal integrity in shaping professional behavior..",
       color: "#61DAFB",
@@ -54,9 +55,9 @@ const Workshops = () => {
     {
       id: "w4",
       title: "CV writinge",
-      organizer: "Cloud Academy",
+      organizer: "Professional Skill",
       date: " 2025",
-      location: "Online",
+      location: "Lecture hall, SLIIT",
       attendees: "full",
       description: "Gained knowledge on creating a well-structured, attractive CV that highlights strengths and achievements.",
       color: "#6C63FF",
@@ -65,20 +66,20 @@ const Workshops = () => {
     {
       id: "w5",
       title: "Interview manners (good and bad)",
-      organizer: "JavaScript Community",
+      organizer:  "Professional Skill",
       date: " 2025",
-      location: "Jaffna, Sri Lanka",
+      location: "Lecture hall, SLIIT",
       attendees:"full",
       description: "Gained knowledge on creating a well-structured, attractive CV that highlights strengths and achievements.",
       color: "#3178C6",
-      image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&h=300&fit=crop",
+      image: week5Image,
     },
     {
       id: "w6",
       title: "Portfolio",
-      organizer: "Backend Developers",
+      organizer: "Professional Skill",
       date: " 2025",
-      location: "Colombo, Sri Lanka",
+      location: "Lecture hall, SLIIT",
       attendees: "full",
       description: "Learned how to design a professional portfolio that showcases skills, certificates, and personal projects.",
       color: "#68A063",
@@ -87,9 +88,9 @@ const Workshops = () => {
     {
       id: "w7",
       title: "Meeting and speaking skis",
-      organizer: "AWS User Group",
+      organizer: "Professional Skill",
       date: "2025",
-      location: "Online",
+      location: "Lecture hall, SLIIT",
       attendees: "full",
       description: "Improved confidence in public speaking and learned how to communicate ideas effectively during meetings.",
       color: "#FF9900",
@@ -98,9 +99,9 @@ const Workshops = () => {
     {
       id: "w8",
       title: "Email writing etiquttes",
-      organizer: "Mobile Developers",
+      organizer: "Professional Skill",
       date: " 2025",
-      location: "Kandy, Sri Lanka",
+      location: "Lecture hall, SLIIT",
       attendees:"full",
       description: "Learned to prepare clear and convincing proposals with proper structure, purpose, and persuasive language.",
       color: "#61DAFB",
@@ -109,9 +110,9 @@ const Workshops = () => {
     {
       id: "w9",
       title: "Proposal writing",
-      organizer: "Database Experts",
+      organizer: "Professional Skill",
       date: " 2025",
-      location: "Online",
+      location: "Lecture hall, SLIIT",
       attendees: "full",
       description: "Optimize database queries, indexing strategies, and learn NoSQL database fundamentals.",
       color: "#00FFFF",
@@ -120,9 +121,9 @@ const Workshops = () => {
     {
       id: "w10",
       title: "Team and leadership",
-      organizer: "AI Research Lab",
+      organizer: "Professional Skill",
       date: " 2025",
-      location: "Colombo, Sri Lanka",
+      location:"Lecture hall, SLIIT",
       attendees: "full",
       description: "Explored how to collaborate effectively, take initiative, and motivate others in group environments.",
       color: "#FF6B6B",
@@ -131,9 +132,9 @@ const Workshops = () => {
     {
       id: "w11",
       title: "Emotional intelligence",
-      organizer: "Security Professionals",
+      organizer: "Professional Skill",
       date: " 2025",
-      location: "Online",
+      location: "Lecture hall, SLIIT",
       attendees:"full",
       description: "Learned to manage emotions, show empathy, and build better interpersonal relationships in professional settings",
       color: "#9D4EDD",
