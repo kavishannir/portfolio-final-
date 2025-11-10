@@ -56,9 +56,6 @@ const Navbar = () => {
   }, [location.pathname]);
 
   const handleNavClick = (item: typeof navItems[0], e: React.MouseEvent) => {
-    // Close mobile menu for all nav items
-    setIsOpen(false);
-    
     if (item.isScroll) {
       e.preventDefault();
       setActiveSection(item.scrollTo || "");
@@ -102,6 +99,7 @@ const Navbar = () => {
           });
         }
       }
+      setIsOpen(false);
     }
   };
 
