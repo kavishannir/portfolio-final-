@@ -165,7 +165,25 @@ const HeroSection = () => {
         </Canvas>
       </div>
 
-      {/* Profile Image - Responsive positioning - Hidden on very small screens, shown from sm up */}
+      {/* Profile Image - Mobile: Top, Desktop: Right side */}
+      {/* Mobile: Show at top */}
+      <motion.div
+        animate={imageControls}
+        className="sm:hidden flex justify-center pt-20 pb-6 z-20"
+      >
+        <div className="relative group">
+          <img
+            src={profileImage}
+            alt="Kavishan Profile"
+            className="w-48 h-60 object-cover relative z-10 rounded-2xl brightness-90 border-4 border-[#6C63FF]"
+            style={{
+              boxShadow: '0 0 10px rgba(108, 99, 255, 0.4), 0 0 80px rgba(108, 99, 255, 0.3), 0 0 120px rgba(108, 99, 255, 0.2)',
+            }}
+          />
+        </div>
+      </motion.div>
+
+      {/* Desktop: Show on right side */}
       <motion.div
         animate={imageControls}
         className="hidden sm:block absolute right-4 top-20 sm:right-8 sm:top-24 md:right-12 md:top-28 lg:right-20 lg:top-32 z-20"
@@ -182,7 +200,7 @@ const HeroSection = () => {
         </div>
       </motion.div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16 sm:pt-12 md:pt-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-0 sm:pt-12 md:pt-16">
         <motion.div
           initial={{ opacity: 0, y: 50, x: 0 }}
           animate={{ opacity: 1, y: 0 }}
@@ -190,7 +208,7 @@ const HeroSection = () => {
         >
           <motion.div
             animate={textControls}
-            className="text-left"
+            className="text-center sm:text-left"
           >
             <motion.h1
               initial={{ opacity: 0, scale: 0.8 }}
@@ -246,7 +264,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex gap-2 sm:gap-3 md:gap-4 justify-start items-center mb-6 sm:mb-8 md:mb-12 flex-wrap"
+              className="flex gap-2 sm:gap-3 md:gap-4 justify-center sm:justify-start items-center mb-6 sm:mb-8 md:mb-12 flex-wrap"
             >
               <a
                 href="https://github.com/kavishannir"
@@ -286,7 +304,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="flex gap-3 sm:gap-4 justify-start flex-wrap"
+              className="flex gap-3 sm:gap-4 justify-center sm:justify-start flex-wrap"
             >
               <Link
                 to="/contact"
