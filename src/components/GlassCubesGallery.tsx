@@ -261,7 +261,7 @@ const GlassCubeInner = ({
           </Text>
         </mesh>
 
-        {/* Week Label on Top - Small Frame */}
+        {/* Session Label on Top - Small Frame */}
         <group ref={labelRef} position={[0, 1.4, 0]}>
           {/* Small frame background */}
           <mesh>
@@ -294,7 +294,7 @@ const GlassCubeInner = ({
             <planeGeometry args={[0.028, 0.7]} />
             <meshStandardMaterial color={workshop.color} emissive={workshop.color} emissiveIntensity={0.7} />
           </mesh>
-          {/* Week text */}
+          {/* Session text */}
           <Text
             position={[0, 0, 0.002]}
             fontSize={0.35}
@@ -305,7 +305,7 @@ const GlassCubeInner = ({
             outlineColor="#000000"
             fontWeight="bold"
           >
-            Week {index + 1}
+            Session {index + 1}
           </Text>
         </group>
       </group>
@@ -727,7 +727,7 @@ const CameraController = ({
       // Zoom to cube - less zoomed in
       const cubePos = new THREE.Vector3(...cubePosition);
       targetPosition.current.lerp(
-        cubePos.clone().add(new THREE.Vector3(0, 2, 10)),
+        cubePos.clone().add(new THREE.Vector3(0, 3, 25)),
         0.08
       );
       targetLookAt.current.lerp(cubePos, 0.08);

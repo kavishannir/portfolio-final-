@@ -2,17 +2,13 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import PageTransition from "@/components/PageTransition";
 import GlassCubesGallery from "@/components/GlassCubesGallery";
-import week1Image from "../week1-1.jpeg";
-import week2Image from "../week2-2.jpeg";
-import week3Image from "../123kavi.jpeg";
-import week4Image from "../week 4 (2).jpeg";
-import week5Image from "../week5 (1).jpeg";
-import week6Image from "../week6 (1).jpeg";
-import week7Image from "../week7 (1).jpeg";
-import week8Image from "../week8 (1).jpeg";
-import week9Image from "../week9 (1).jpeg";
-import week10Image from "../week10 (1).jpeg";
-import week11Image from "../week11 (1).jpeg";
+import s1Image from "../s1.jpg";
+import s22Image from "../s2.jpeg";
+import s3Image from "../s3.jpeg";
+import s4Image from "../s4.jpeg";
+import s5Image from "../s5.jpeg";
+import s6Image from "../s6.jpeg";
+import s7Image from "../s7.jpeg";
 
 const Workshops = () => {
   const ref = useRef(null);
@@ -21,124 +17,80 @@ const Workshops = () => {
   const workshops = [
     {
       id: "w1",
-      title: "Professional Skills",
-      organizer: "SLIIT",
-      date: " 2025",
+      title: "Introduction to Employability Skills Development",
+      organizer: " Lecturer: Ms. Vishaliney Pirath",
+      date: "  1st Feb 2025",
       location: "Lecture hall, SLIIT",
       attendees: "full",
-      description: "Learned how to develop core abilities like communication, teamwork, and time management needed for workplace success.",
+      description: "introduced the ESD module, explaining its objectives and the importance of employability skills in today’s job market.",
       color: "#00A1E0",
-      image: week1Image,
+      image: s1Image,
     },
     {
       id: "w2",
-      title: "employbility skills",
-      organizer: "SLIIT",
-      date: " 2025",
+      title: "company low & business low",
+      organizer: "Resource Person: Ms. Vaishnavy Shanmuganathan ",
+      date: " 202 22nd Mar 2025",
       location: "Lecture hall, SLIIT",
       attendees: "full",
-      description: "Understood what makes a candidate job-ready — including adaptability, problem-solving, and presentation skills..",
+      description: "The Startup Survival Kit: Contracts, IP, and Legal Structures.",
       color: "#2496ED",
-      image: week2Image,
+      image: s22Image,
     },
     {
       id: "w3",
-      title: "Mock interview",
-      organizer: "Tech Meetup Sri Lanka",
+      title: "Selecting a Career Path'",
+      organizer: "Resource Person: Mr. Gajarthan Thevarajah (CEO, Bohar Solutions)",
       date: "2025",
       location: "Lecture hall, SLIIT",
       attendees:"full",
-      description: "Learned the importance of positive attitude, ethics, and personal integrity in shaping professional behavior..",
+      description: "The roadmap from Just Curious to Hired Developer",
       color: "#61DAFB",
-      image: week3Image,
+      image: s3Image,
     },
     {
       id: "w4",
-      title: "CV writinge",
-      organizer: "Professional Skill",
+      title: "Non-IT Career Opportunitie",
+      organizer: "Resource Person: Ms. Sarmila Sivaraja (CEO, 2SF Labs & Google WTM Ambassador)",
       date: " 2025",
       location: "Lecture hall, SLIIT",
       attendees: "full",
-      description: "Gained knowledge on creating a well-structured, attractive CV that highlights strengths and achievements.",
+      description: "Expanding horizons: Entrepreneurship & Public Speaking.",
       color: "#6C63FF",
-      image: week4Image,
+      image: s4Image,
     },
     {
       id: "w5",
-      title: "Interview manners (good and bad)",
-      organizer:  "Professional Skill",
+      title: "HR Expectations & Industry Attitudes",
+      organizer:  "Resource Person: Mr. Mahinthan",
       date: " 2025",
       location: "Lecture hall, SLIIT",
       attendees:"full",
-      description: "Gained knowledge on creating a well-structured, attractive CV that highlights strengths and achievements.",
+      description: "Resource Person: Mr. Mahinthan,Cracking the HR Code: Resumes, Interviews, & Corporate Culture",
       color: "#3178C6",
-      image: week5Image,
+      image: s5Image,
     },
     {
       id: "w6",
-      title: "Portfolio",
-      organizer: "Professional Skill",
+      title: "Managing Stress & Work-Life Balance",
+      organizer: "Resource Person: Mr. Kuga",
       date: " 2025",
       location: "Lecture hall, SLIIT",
       attendees: "full",
-      description: "Learned how to design a professional portfolio that showcases skills, certificates, and personal projects.",
+      description: "Resource Person: Mr. Kuga,Mastering the art of staying cool under pressure.",
       color: "#68A063",
-      image: week6Image,
+      image: s6Image,
     },
     {
       id: "w7",
-      title: "Meeting and speaking skis",
-      organizer: "Professional Skill",
+      title: "Modern tech roles and what the industry demands",
+      organizer: "Resource Person: Mr. Ravichelvan Kanagasabapathy (Tech Lead, HCLTech)",
       date: "2025",
       location: "Lecture hall, SLIIT",
       attendees: "full",
-      description: "Improved confidence in public speaking and learned how to communicate ideas effectively during meetings.",
+      description: "Modern tech roles and what the industry demands.",
       color: "#FF9900",
-      image: week7Image,
-    },
-    {
-      id: "w8",
-      title: "Email writing etiquttes",
-      organizer: "Professional Skill",
-      date: " 2025",
-      location: "Lecture hall, SLIIT",
-      attendees:"full",
-      description: "Learned to prepare clear and convincing proposals with proper structure, purpose, and persuasive language.",
-      color: "#61DAFB",
-      image: week8Image,
-    },
-    {
-      id: "w9",
-      title: "Proposal writing",
-      organizer: "Professional Skill",
-      date: " 2025",
-      location: "Lecture hall, SLIIT",
-      attendees: "full",
-      description: "Optimize database queries, indexing strategies, and learn NoSQL database fundamentals.",
-      color: "#00FFFF",
-      image: week9Image,
-    },
-    {
-      id: "w10",
-      title: "Team and leadership",
-      organizer: "Professional Skill",
-      date: " 2025",
-      location:"Lecture hall, SLIIT",
-      attendees: "full",
-      description: "Explored how to collaborate effectively, take initiative, and motivate others in group environments.",
-      color: "#FF6B6B",
-      image: week10Image,
-    },
-    {
-      id: "w11",
-      title: "Emotional intelligence",
-      organizer: "Professional Skill",
-      date: " 2025",
-      location: "Lecture hall, SLIIT",
-      attendees:"full",
-      description: "Learned to manage emotions, show empathy, and build better interpersonal relationships in professional settings",
-      color: "#9D4EDD",
-      image: week11Image,
+      image: s7Image,
     },
   ];
 
